@@ -4,6 +4,7 @@ import { storeContext } from './context';
 function Provider ({ children }) {
   const [cartSize, setCartSize] = useState(0);
   const [total, setTotal] = useState(0);
+  const [shipping, setShipping] = useState(0);
   const [cartProducts, setCartProducts] = useState([]);
 
   const contextValue = {
@@ -12,7 +13,9 @@ function Provider ({ children }) {
     cartProducts,
     setCartProducts,
     total,
-    setTotal
+    setTotal,
+    shipping,
+    setShipping
   };
 
   return (

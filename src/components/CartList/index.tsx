@@ -11,8 +11,8 @@ type Props = {
 }
 
 export function CartList({ data, ...rest } : Props) {
-  const { cartSize, setCartSize, cartProducts, setCartProducts } = useContext(storeContext)
-  const [quantity, setQuantity] = useState(data.qtd)
+  const { cartSize, setCartSize, cartProducts, setCartProducts, total, setTotal, shipping, setShipping } = useContext(storeContext)
+  const [quantity, setQuantity] = useState<any>(data.qtd)
   
 
 
@@ -24,30 +24,34 @@ export function CartList({ data, ...rest } : Props) {
   }
 
   const handleQuantity = (type: string) => {
-    cartProducts.forEach((item, index) => {
+    cartProducts.forEach((item: object, index) => {
       if (item.id === data.id) {
         if (type === 'plus') {
           cartProducts[index].qtd++
           setCartProducts(cartProducts)
           setQuantity(quantity + 1)
           setCartSize(cartSize + 1)
+          setShipping(shipping + 10)
+          setTotal(total + data.price)
         } else {
           cartProducts[index].qtd--
           setCartProducts(cartProducts)
           setQuantity(quantity - 1)
           setCartSize(cartSize - 1)
+          setTotal(total - data.price)
+          setShipping(shipping - 10)
           handleDelete(index, quantity - 1)
         }
       }
     });
-  }
+  };
 
 
   return (
     <View>
       <View style={styles.container}>
         <Image source={images[data.image]}  style={{width: 120, height: 120}} />
-          <View style={styles.textContainer}>
+          <View>
             <Text style={styles.title}>{data.name}</Text>
             <Text style={styles.price}>{`USD ${data.price}`}</Text>
             <View style={styles.quantityContainer}>
@@ -68,5 +72,5 @@ export function CartList({ data, ...rest } : Props) {
           </View>
       </View>
     </View>
-  )
+  );
 };

@@ -9,7 +9,7 @@ import { styles } from './styles'
 
 
 export function Cart() {
-  const { cartProducts, total } = useContext(storeContext);
+  const { cartProducts, total, shipping } = useContext(storeContext);
 
   return (
     <>
@@ -21,6 +21,10 @@ export function Cart() {
       />
       <View style={{width: '90%', alignSelf: 'center'}}>
         <Text style={styles.total}>{`Total: USD ${total}`}</Text>
+        {shipping > 249 
+          ? <Text style={styles.total}>{`Shipping: free`}</Text>
+          : <Text style={styles.total}>{`Shipping: USD ${shipping}`}</Text>
+        }
         <ButtonGo title="Proceed to Checkout"/>
       </View>
     </>

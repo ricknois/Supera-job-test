@@ -17,7 +17,7 @@ type Props = ImageProps & {
 }
 
 export function ProductDetails({ route , ...rest }: Props) {
-  const { cartSize, setCartSize, cartProducts, setCartProducts, setTotal, total } = useContext(storeContext)
+  const { cartSize, setCartSize, cartProducts, setCartProducts, setTotal, total, setShipping, shipping } = useContext(storeContext)
   const { data } = route.params
 
   const handleCart = () => {
@@ -35,6 +35,7 @@ export function ProductDetails({ route , ...rest }: Props) {
       setCartProducts(cartProducts)
     : setCartProducts([...cartProducts, {...data, qtd: 1}]);
     setTotal(total + data.price)
+    setShipping(shipping + 10)
   };
 
   return (

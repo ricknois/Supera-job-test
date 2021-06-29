@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, FlatList, Picker } from 'react-native'
+import { View, FlatList, Picker } from 'react-native'
 import api from '../../utils/api/products.json';
 import { Product } from '../Product';
 import { handleFilter } from '../../utils/helper';
@@ -12,7 +12,7 @@ export function Products() {
     handleFilter(api, selectedLanguage, setData)
   }, [])
 
-  const handle = async (itemValue: string) => {
+  const handlePicker = async (itemValue: string) => {
     setSelectedLanguage(itemValue)
     handleFilter(api, itemValue, setData)
   }
@@ -21,7 +21,7 @@ export function Products() {
       <Picker
         selectedValue={selectedLanguage}
         onValueChange={(itemValue) =>
-          handle(itemValue)
+          handlePicker(itemValue)
         }>
         <Picker.Item label="High Price" value="High Price" />
         <Picker.Item label="Low Price" value="Low Price" />
