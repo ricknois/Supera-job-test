@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
 import { styles } from './style';
 
 type Props = RectButtonProps & {
   title: string;
-  onPress: Function;
+  onPress?: Function;
 }
 
 export function ButtonGo({ title, onPress, ...rest } : Props) {

@@ -4,6 +4,8 @@ import { theme } from '../global/styles/theme';
 
 import { SignIn } from '../screens/SignIn';
 import { Home } from '../screens/Home';
+import { ProductDetails } from '../screens/ProductDetails';
+import { Cart } from '../screens/Cart';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -25,6 +27,14 @@ export function AuthRoutes() {
       <Screen
         name="Home"
         component={Home}
+      />
+      <Screen
+        name="Details"
+        component={ProductDetails}
+      />
+      <Screen
+        name="Cart"
+        component={Cart}
       />
     </Navigator>
   );

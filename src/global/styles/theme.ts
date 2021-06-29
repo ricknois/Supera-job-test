@@ -18,5 +18,6 @@ export const theme = {
     dm400: 'DMSans_400Regular',
     dm700: 'DMSans_700Bold',
     mont400: 'Montserrat_400Regular',
+    mont700: 'Montserrat_700Bold',
   }
 };
